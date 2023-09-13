@@ -19,14 +19,15 @@ def resource_path(relative_path):
 
 main_ui = Ui_MainWindow()
 
-NAME = 'Dart Api'
+NAME = 'Dart OpenApi'
 
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         main_ui.setupUi(self)
+        self.setWindowTitle(NAME)
         
-        favicon = resource_path('favicon.ico')
+        favicon = resource_path('favicon.png')
         self.setWindowIcon(QIcon(favicon))
         
         self.timer = QTimer(self)
