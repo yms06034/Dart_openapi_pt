@@ -78,10 +78,10 @@ def start_financialStatement(corp_code):
         else:
             all_combined_df = pd.DataFrame()
             
-        now = datetime.now().strftime("%Y%m/%d_%H:%M:%S")
+        dt = datetime.now().strftime("%Y-%m-%d_%H%M")
         
 
-        all_combined_df.to_excel(f'단일회사_전체_재무제표_{now}.xlsx', index=False)
+        all_combined_df.to_excel(f'단일회사_전체_재무제표_{dt}.xlsx', index=False)
         return 1
     else:
         return 0

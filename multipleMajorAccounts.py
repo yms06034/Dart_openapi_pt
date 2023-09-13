@@ -88,8 +88,8 @@ def start_multipleMajorAccounts(corp_code):
             all_combined_df = pd.DataFrame()
 
         print("출력 number : ",start_num)
-        now = datetime.now().strftime("%Y%m/%d_%H:%M:%S")
-        all_combined_df.to_excel(f'다중회사_주요계정_{start_num}_{now}.xlsx', index=False)
+        dt = datetime.now().strftime("%Y-%m-%d_%H%M")
+        all_combined_df.to_excel(f'다중회사_주요계정_{start_num}_{dt}.xlsx', index=False)
         start_num += 1
         
     return 1
