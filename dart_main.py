@@ -62,9 +62,9 @@ class MainWindow(QMainWindow):
             if path[0].split('.')[-1] == 'xlsx':
                 df_code = pd.read_excel(path[0], dtype=str)
                 df_list = df_code[0].to_list()
-                print(df_list)
                 main_ui.corpcode_list.addItems(df_list)
                 self.corpcode_list.append(df_list)
+                print(self.corpcode_list[0])
             else:
                 QMessageBox.information(self,NAME,'파일의 확장자가 xlsx 아닙니다.')
                 return
@@ -98,9 +98,9 @@ class MainWindow(QMainWindow):
             if path[0].split('.')[-1] == 'xlsx':
                 df_code = pd.read_excel(path[0], dtype=str)
                 df_list = df_code[0].to_list()
-                print(df_list)
                 main_ui.corpcode_list_2.addItems(df_list)
                 self.corpcode_list_2.append(df_list)
+                print(self.corpcode_list_2[0])
             else:
                 QMessageBox.information(self,NAME,'파일의 확장자가 xlsx 아닙니다.')
                 return

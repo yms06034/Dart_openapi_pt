@@ -2,6 +2,7 @@ import requests
 import json
 import pandas as pd
 import math
+import time
 
 from datetime import datetime
 
@@ -33,12 +34,13 @@ def data_processing(data, year, code):
 def start_multipleMajorAccounts(corp_code):
     total_list = []
     batch_size = 100
-
-    for i in range(0, len(corp_code), batch_size):
+    print("corp_code : ", len(corp_code[0]))
+    for i in range(0, len(corp_code[0]), batch_size):
         batch_100 = corp_code[i:i+batch_size]
         total_list.append(batch_100)
 
-    count = math.ceil(len(total_list) / 100)
+    count = math.ceil(len(corp_code[0]) / 100)
+    print(count)
 
     start_num = 1
 
@@ -65,6 +67,7 @@ def start_multipleMajorAccounts(corp_code):
                     try:
                         data = response.json()
                         result_data.setdefault(re_i, {})[re] = data
+                        time.sleep(.2)
                     except json.JSONDecodeError as e:
                         print("JSON 디코딩 오류:", e)
                 else:

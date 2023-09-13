@@ -2,6 +2,7 @@ import requests
 import json
 import pandas as pd
 from datetime import datetime
+import time
 
 def data_process(data, year, code, i):
     data_df = data[year][f'{code}'][f'{i}']['list']
@@ -35,7 +36,7 @@ def start_financialStatement(corp_code):
         year_data = {}
 
         for code in reprt_codes:
-            for cc in corp_code:
+            for cc in corp_code[0]:
                 params = {
                     "crtfc_key": KEY,
                     "corp_code": cc,
