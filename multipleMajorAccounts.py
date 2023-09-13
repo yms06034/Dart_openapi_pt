@@ -3,6 +3,8 @@ import json
 import pandas as pd
 import math
 
+from datetime import datetime
+
 def data_processing(data, year, code):
     if data[year][code]['status'] == '000': 
         data_df = data[year][code]['list']
@@ -86,7 +88,8 @@ def start_multipleMajorAccounts(corp_code):
             all_combined_df = pd.DataFrame()
 
         print("출력 number : ",start_num)
-        all_combined_df.to_excel(f'다중회사_주요계정_{start_num}.xlsx', index=False)
+        now = datetime.now().strftime("%Y%m/%d_%H:%M:%S")
+        all_combined_df.to_excel(f'다중회사_주요계정_{start_num}_{now}.xlsx', index=False)
         start_num += 1
         
     return 1

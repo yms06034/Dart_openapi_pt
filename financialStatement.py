@@ -1,6 +1,7 @@
 import requests
 import json
 import pandas as pd
+from datetime import datetime
 
 def data_process(data, year, code, i):
     data_df = data[year][f'{code}'][f'{i}']['list']
@@ -76,8 +77,11 @@ def start_financialStatement(corp_code):
             all_combined_df.reset_index(drop=True, inplace=True)
         else:
             all_combined_df = pd.DataFrame()
+            
+        now = datetime.now().strftime("%Y%m/%d_%H:%M:%S")
+        
 
-        all_combined_df.to_excel(f'단일회사_전체_재무제표.xlsx', index=False)
+        all_combined_df.to_excel(f'단일회사_전체_재무제표_{now}.xlsx', index=False)
         return 1
     else:
         return 0
